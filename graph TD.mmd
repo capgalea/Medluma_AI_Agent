@@ -1,52 +1,59 @@
-graph TD
-    Start([User Query: Disease Information Request]) --> Coordinator[Coordinator Agent<br/>Gemini 2.5 Flash Lite]
+```mermaid
+flowchart TB
+    subgraph row1[" "]
+        direction LR
+        Start([User Query]) --> Coordinator[Coordinator Agent]
+        Coordinator --> UserPrompt{User Preference}
+        UserPrompt --> PrefCheck{Preference Type?}
+        PrefCheck --> SetComp[Set: comprehensive]
+    end
     
-    Coordinator -->|Calls get_output_preference| UserPrompt{User Preference Request}
-    UserPrompt -->|User Responds| PrefCheck{Preference Type?}
+    subgraph row2[" "]
+        direction LR
+        SetSimple[Set: simple] --> ResearchPipe[Research Pipeline]
+        ResearchPipe --> BioRes[Bio Researcher]
+        BioRes --> BioSearch[(Clinical Trials DB)]
+        BioSearch --> BioOut[Bio Summary]
+    end
     
-    PrefCheck -->|Comprehensive| SetComp[Set: comprehensive]
-    PrefCheck -->|Simple| SetSimple[Set: simple]
-    PrefCheck -->|Default| SetSimple
+    subgraph row3[" "]
+        direction LR
+        HealthRes[Health Researcher] --> GoogleSearch[(Google Search)]
+        GoogleSearch --> HealthOut[Health Research]
+        HealthOut --> Aggregator[Aggregator Agent]
+        Aggregator --> ExecSum[Executive Summary]
+    end
     
-    SetComp --> ResearchPipe[Research Pipeline<br/>Sequential Agent]
-    SetSimple --> ResearchPipe
+    subgraph row4[" "]
+        direction LR
+        InitWriter[Science Writer] --> Draft1[First Draft]
+        Draft1 --> RefineLoop[Refinement Loop]
+        RefineLoop --> Critic[Critic Agent]
+        Critic --> CriticCheck{Quality Check}
+    end
     
-    ResearchPipe --> BioRes[Bio Researcher<br/>Gemini 2.5 Flash]
-    BioRes -->|Uses BioMCP Tool| BioSearch[(Search Clinical Trials<br/>& Research DBs)]
-    BioSearch --> BioOut[Bio Research Summary<br/>+ References]
+    subgraph row5[" "]
+        direction LR
+        ExitLoop[Exit Loop] --> FinalAgent[Final Output Agent]
+        FinalAgent --> FormatCheck{Output Format?}
+        FormatCheck --> CompOutput[Comprehensive]
+        CompOutput --> End([Delivered])
+    end
     
-    BioOut --> HealthRes[Health Researcher<br/>Gemini 2.5 Flash Lite]
-    HealthRes -->|Uses Google Search| GoogleSearch[(Search Medical<br/>Breakthroughs)]
-    GoogleSearch --> HealthOut[Health Research<br/>3 Recent Advances]
+    %% Cross-row connections
+    SetComp --> SetSimple
+    PrefCheck -.->|Simple/Default| SetSimple
+    BioOut --> HealthRes
+    ExecSum --> InitWriter
+    CriticCheck -->|APPROVED| ExitLoop
+    CriticCheck -.->|Needs Work| Feedback[Feedback]
+    Feedback -.-> Refiner[Refiner Agent]
+    Refiner -.-> ImprovedDraft[Improved Draft]
+    ImprovedDraft -.->|Loop Back| Critic
+    FormatCheck -.->|Simple| SimpleOutput[Simple Output]
+    SimpleOutput -.-> End
     
-    HealthOut --> Aggregator[Aggregator Agent<br/>Gemini 2.5 Flash Lite]
-    Aggregator -->|Combines| ExecSum[Executive Summary<br/>200 words]
-    
-    ExecSum --> InitWriter[Initial Science Writer<br/>Gemini 2.5 Flash Lite]
-    InitWriter --> Draft1[First Draft Article<br/>100-150 words]
-    
-    Draft1 --> RefineLoop[Article Refinement Loop<br/>Max 2 Iterations]
-    
-    RefineLoop --> Critic[Critic Agent<br/>Gemini 2.5 Flash Lite]
-    Critic -->|Reviews Article| CriticCheck{Quality Check}
-    
-    CriticCheck -->|APPROVED| ExitLoop[Exit Loop<br/>via exit_loop function]
-    CriticCheck -->|Needs Work| Feedback[2-3 Suggestions]
-    
-    Feedback --> Refiner[Refiner Agent<br/>Gemini 2.5 Flash Lite]
-    Refiner -->|Rewrites| ImprovedDraft[Improved Draft]
-    ImprovedDraft -->|Loop Back| Critic
-    
-    ExitLoop --> FinalAgent[Final Output Agent<br/>Gemini 2.5 Flash Lite]
-    
-    FinalAgent -->|Checks Preference| FormatCheck{Output Format?}
-    
-    FormatCheck -->|Comprehensive| CompOutput[Executive Summary<br/>+<br/>Final Article<br/>+<br/>Key Developments]
-    FormatCheck -->|Simple| SimpleOutput[Final Article Only]
-    
-    CompOutput --> End([Delivered to User])
-    SimpleOutput --> End
-    
+    %% Styling
     style Start fill:#e1f5ff
     style End fill:#c8e6c9
     style Coordinator fill:#fff9c4
@@ -57,8 +64,11 @@ graph TD
     style Critic fill:#fff9c4
     style Refiner fill:#fff9c4
     style FinalAgent fill:#fff9c4
-    style RefineLoop fill:#ffe0b2
-    style ResearchPipe fill:#ffe0b2
-    style UserPrompt fill:#f3e5f5
-    style BioSearch fill:#e8eaf6
-    style GoogleSearch fill:#e8eaf6
+    
+    %% Hide subgraph borders
+    style row1 fill:none,stroke:none
+    style row2 fill:none,stroke:none
+    style row3 fill:none,stroke:none
+    style row4 fill:none,stroke:none
+    style row5 fill:none,stroke:none
+    ```
