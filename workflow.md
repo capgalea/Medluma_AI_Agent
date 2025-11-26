@@ -1,0 +1,68 @@
+```mermaid
+
+graph TD
+    Start([User Query: Disease Information Request]) --> Coordinator[Coordinator Agent<br/>Gemini 2.5 Flash Lite]
+    
+    Coordinator -->|Calls get_output_preference| UserPrompt{User Preference Request}
+    UserPrompt -->|User Responds| PrefCheck{Preference Type?}
+    
+    PrefCheck -->|Comprehensive| SetComp[Set: comprehensive]
+    PrefCheck -->|Simple| SetSimple[Set: simple]
+    PrefCheck -->|Default| SetSimple
+    
+    SetComp --> ResearchPipe[Research Pipeline<br/>Sequential Agent]
+    SetSimple --> ResearchPipe
+    
+    ResearchPipe --> BioRes[Bio Researcher<br/>Gemini 2.5 Flash]
+    BioRes -->|Uses BioMCP Tool| BioSearch[(Search Clinical Trials<br/>& Research DBs)]
+    BioSearch --> BioOut[Bio Research Summary<br/>+ References]
+    
+    BioOut --> HealthRes[Health Researcher<br/>Gemini 2.5 Flash Lite]
+    HealthRes -->|Uses Google Search| GoogleSearch[(Search Medical<br/>Breakthroughs)]
+    GoogleSearch --> HealthOut[Health Research<br/>3 Recent Advances]
+    
+    HealthOut --> Aggregator[Aggregator Agent<br/>Gemini 2.5 Flash Lite]
+    Aggregator -->|Combines| ExecSum[Executive Summary<br/>200 words]
+    
+    ExecSum --> InitWriter[Initial Science Writer<br/>Gemini 2.5 Flash Lite]
+    InitWriter --> Draft1[First Draft Article<br/>100-150 words]
+    
+    Draft1 --> RefineLoop[Article Refinement Loop<br/>Max 2 Iterations]
+    
+    RefineLoop --> Critic[Critic Agent<br/>Gemini 2.5 Flash Lite]
+    Critic -->|Reviews Article| CriticCheck{Quality Check}
+    
+    CriticCheck -->|APPROVED| ExitLoop[Exit Loop<br/>via exit_loop function]
+    CriticCheck -->|Needs Work| Feedback[2-3 Suggestions]
+    
+    Feedback --> Refiner[Refiner Agent<br/>Gemini 2.5 Flash Lite]
+    Refiner -->|Rewrites| ImprovedDraft[Improved Draft]
+    ImprovedDraft -->|Loop Back| Critic
+    
+    ExitLoop --> FinalAgent[Final Output Agent<br/>Gemini 2.5 Flash Lite]
+    
+    FinalAgent -->|Checks Preference| FormatCheck{Output Format?}
+    
+    FormatCheck -->|Comprehensive| CompOutput[Executive Summary<br/>+<br/>Final Article<br/>+<br/>Key Developments]
+    FormatCheck -->|Simple| SimpleOutput[Final Article Only]
+    
+    CompOutput --> End([Delivered to User])
+    SimpleOutput --> End
+    
+    style Start fill:#e1f5ff
+    style End fill:#c8e6c9
+    style Coordinator fill:#fff9c4
+    style BioRes fill:#fff9c4
+    style HealthRes fill:#fff9c4
+    style Aggregator fill:#fff9c4
+    style InitWriter fill:#fff9c4
+    style Critic fill:#fff9c4
+    style Refiner fill:#fff9c4
+    style FinalAgent fill:#fff9c4
+    style RefineLoop fill:#ffe0b2
+    style ResearchPipe fill:#ffe0b2
+    style UserPrompt fill:#f3e5f5
+    style BioSearch fill:#e8eaf6
+    style GoogleSearch fill:#e8eaf6
+
+    ```
