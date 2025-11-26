@@ -1,5 +1,4 @@
 ```mermaid
-
 graph TD
     Start([User Query: Disease Information Request]) --> Coordinator[Coordinator Agent<br/>Gemini 2.5 Flash Lite]
     
@@ -64,5 +63,4 @@ graph TD
     style UserPrompt fill:#f3e5f5
     style BioSearch fill:#e8eaf6
     style GoogleSearch fill:#e8eaf6
-
-    ```
+```
