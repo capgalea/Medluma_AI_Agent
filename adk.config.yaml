@@ -1,0 +1,3 @@
+apps:
+  - path: ./medluma_app.py
+    app_name: app
