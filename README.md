@@ -1,14 +1,24 @@
 # 🏥 Medluma - AI-Powered Disease Information Portal
 
-[![Medluma](medluna_capstone_image.png)](medluma_example.webm)
+<div align="center">
 
-> 🎯 **Bridge the gap between complex medical data and accessible health information**
+![Medluma Banner](images/medluna_capstone_image.png)
 
-**Medluma** is a comprehensive, AI-powered disease information portal that leverages multi-agent orchestration to automate the retrieval, synthesis, and presentation of medical knowledge. Get tailored insights ranging from detailed biomedical research to simplified health news—all in one place.
+### 🎯 Bridge the gap between complex medical data and accessible health information
 
-## 📹 Demo
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Google ADK](https://img.shields.io/badge/Google-ADK-4285F4?logo=google)](https://developers.google.com/)
 
-Watch the demo: [medluma_example.webm](medluma_example.webm)
+[Demo Video](images/medluma_example.webm) • [Documentation](#-architecture) • [Quick Start](#-quick-start) • [Contact](#-contact)
+
+</div>
+
+---
+
+## 📖 Overview
+
+**Medluma** is a comprehensive, AI-powered disease information portal that leverages multi-agent orchestration to automate the retrieval, synthesis, and presentation of medical knowledge. Built with Google's Agent Development Kit (ADK) and powered by Gemini 2.0, it provides tailored insights ranging from detailed biomedical research to simplified health news—all in one place.
 
 ## ✨ Features
 
@@ -56,8 +66,6 @@ adk web
 
 Navigate to `http://127.0.0.1:8000` in your browser.
 
-![Medluma Workflow](disease_condition_research_flow.svg)
-
 ## 🎯 Problem Statement
 
 Navigating the vast ocean of medical information is a daunting task for both healthcare professionals and the general public:
@@ -83,6 +91,14 @@ Medluma deploys a **team of specialized AI agents** acting as an on-demand medic
 ## 🏗️ Architecture
 
 At the heart of Medluma is **sophisticated multi-agent orchestration** powered by Google's Gemini models. Rather than a single LLM trying to do everything, the workload is distributed among domain experts.
+
+<div align="center">
+
+![Medluma Workflow](images/disease_condition_research_flow.svg)
+
+*Complete workflow showing the multi-agent orchestration process*
+
+</div>
 
 ### 🤖 The Agent Team
 
@@ -170,25 +186,46 @@ Quality assurance mechanism:
 
 ## 🔧 Configuration
 
-The `adk.config.yaml` file specifies the app configuration:
-
-```yaml
-apps:
-  - path: ./medluma_app.py
-    app_name: app
-```
-
 ## 📂 Project Structure
 
 ```
 Medluma_AI_Agent/
-├── medluma_app.py          # Main application file
-├── adk.config.yaml         # ADK configuration
-├── requirements.txt        # Python dependencies
-├── .env                    # Environment variables (create this)
-├── medluma/               # Package directory
-│   └── __init__.py
-├── Medluna_mermaid.png    # Workflow diagram
+├── medluma_app.py                      # Main application entry point
+├── medluma.py                          # Legacy/alternative implementation
+├── adk.config.yaml                     # ADK web server configuration
+├── requirements.txt                    # Python dependencies
+├── LICENSE                             # MIT License
+├── README.md                           # This file
+├── .env                                # Environment variables (create this)
+├── .gitignore                          # Git ignore rules
+│
+├── medluma/                            # Application package
+│   └── __init__.py                     # Package initializer
+│
+├── images/                             # Assets and media
+│   ├── medluma_example.webm            # Demo video
+│   ├── disease_condition_research_flow.svg  # Workflow diagram
+│   ├── disease_info_generation.png     # Process diagram
+│   ├── medluna_capstone_image.png      # Banner image
+│   ├── medluna_image.png               # Architecture image
+│   └── future_app_medluna.png          # Future vision mockup
+## 🚀 Future Enhancements
+
+<div align="center">
+
+![Future Vision](images/future_app_medluna.png)
+
+*Vision for expanded capabilities*
+
+</div>
+
+- 🌍 **Multi-language Support** - Reach global audiences with translations
+- 📱 **Mobile Application** - iOS and Android apps for on-the-go access
+- 🔔 **Personalized Health Alerts** - Customized notifications for followed conditions
+- 📈 **Trending Disease Tracking** - Real-time monitoring of emerging health topics
+- 🤝 **Collaborative Research** - Share and annotate reports with teams
+- 🔗 **API Access** - Programmatic integration for healthcare systems
+- 📚 **Knowledge Base** - Build institutional memory of past queriesw diagram
 ├── medluma_example.webm   # Demo video
 └── README.md              # This file
 ```
@@ -205,34 +242,39 @@ Medluma_AI_Agent/
 
 ## 💡 Value Proposition
 
-Medluma demonstrates the potential of agentic workflows in the healthcare domain:
-
-- **Reduced Cognitive Load** - Automates initial literature review for researchers
-- **Translation Layer** - Converts complex jargon into understandable summaries for patients
-- **Minimized Hallucinations** - Leverages specialized tools like BioMCP for verified, factual data
-- **Quality Through Iteration** - Critic-Refiner loop mimics real-world editorial processes
-- **Depth and Reliability** - Multi-agent specialization achieves what single-shot prompts cannot
-
 ## 📝 License
 
-This project is licensed under the terms included in the [LICENSE](LICENSE) file.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-- **Google ADK** - Agent Development Kit powering the multi-agent architecture
-- **BioMCP** - Biological Model Context Protocol for medical data access
-- **Gemini 2.0 Flash** - Advanced AI models driving the agents
+- **[Google ADK](https://developers.google.com/)** - Agent Development Kit powering the multi-agent architecture
+- **[BioMCP](https://github.com/ckreiling/biomcp)** - Biological Model Context Protocol for medical data access  
+- **[Gemini 2.0 Flash](https://deepmind.google/technologies/gemini/)** - Advanced AI models driving the intelligent agents
+- **Open Source Community** - For the amazing tools and libraries that make this possible
 
 ## 📧 Contact
 
-For questions or feedback, please open an issue on GitHub.
+**Charles Galea**  
+📧 Email: [galea.charlesa@gmail.com](mailto:galea.charlesa@gmail.com)  
+🐙 GitHub: [@capgalea](https://github.com/capgalea)
+
+For bug reports and feature requests, please [open an issue](https://github.com/capgalea/Medluma_AI_Agent/issues).
+
+## 🌟 Support
+
+If you find Medluma useful, please consider:
+- ⭐ Starring the repository
+- 🐛 Reporting bugs and suggesting features
+- 🤝 Contributing to the codebase
+- 📢 Sharing with others who might benefit
 
 ---
 
 <div align="center">
 
-**Built with ❤️ using Google ADK and Gemini 2.0**
+![Medluma Architecture](images/medluna_image.png)
 
-![Medluma Architecture](medluna_image.png)
+*Empowering healthcare professionals and patients with AI-driven medical insights*
 
 </div>
