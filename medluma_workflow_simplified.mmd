@@ -1,0 +1,63 @@
+%%{init: {'theme':'base', 'themeVariables': { 'background':'#ffffff', 'primaryColor':'#ffffff', 'primaryBorderColor':'#333', 'lineColor':'#333', 'secondaryColor':'#ffffff', 'tertiaryColor':'#ffffff', 'clusterBkg':'#ffffff', 'clusterBorder':'#616161', 'defaultLinkColor':'#333', 'titleColor':'#333', 'edgeLabelBackground':'#ffffff'}}}%%
+
+flowchart TD
+    Start(["🎯 User Query<br/>Enter Disease/Condition"])
+    
+    Start --> Coordinator["🎛️ Coordinator Agent<br/>Get User Preference"]
+    
+    Coordinator --> Choice{"Output Format?"}
+    
+    Choice -->|Comprehensive| Research["🔬 Research Phase"]
+    Choice -->|Simple| Research
+    
+    subgraph Research ["📚 Data Collection"]
+        direction TB
+        BioResearch["🧬 Bio Researcher<br/>• Clinical Trials<br/>• Mutations<br/>• Research Papers"]
+        NewsResearch["📰 Health Researcher<br/>• Latest News<br/>• Breakthroughs<br/>• Applications"]
+        
+        BioResearch & NewsResearch --> Aggregate["🔄 Aggregator<br/>Create Executive Summary"]
+    end
+    
+    Research --> Writer["✍️ Initial Writer<br/>Draft Article"]
+    
+    Writer --> QualityLoop
+    
+    subgraph QualityLoop ["🔁 Quality Assurance Loop"]
+        direction TB
+        Critic{"📝 Critic Agent<br/>Review Quality"}
+        Critic -->|Needs Work| Refiner["✨ Refiner Agent<br/>Improve Article"]
+        Refiner --> Critic
+        Critic -->|Approved ✓| Done["✅ Quality Approved"]
+    end
+    
+    QualityLoop --> Format["📊 Final Output Agent"]
+    
+    Format --> CompCheck{"User Preference?"}
+    
+    CompCheck -->|Comprehensive| FullReport["📋 Full Report<br/>• Executive Summary<br/>• Article<br/>• Key Developments<br/>• References"]
+    CompCheck -->|Simple| SimpleReport["📄 Simple Article<br/>Concise Summary Only"]
+    
+    FullReport --> End([" 🎉 Delivered to User"])
+    SimpleReport --> End
+    
+    style Start fill:#e1f5ff,stroke:#0288d1,stroke-width:3px
+    style Coordinator fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+    style BioResearch fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
+    style NewsResearch fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
+    style Aggregate fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
+    style Writer fill:#e0f2f1,stroke:#009688,stroke-width:2px
+    style Critic fill:#fce4ec,stroke:#e91e63,stroke-width:2px
+    style Refiner fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+    style Done fill:#c8e6c9,stroke:#4caf50,stroke-width:3px
+    style Format fill:#f1f8e9,stroke:#8bc34a,stroke-width:2px
+    style FullReport fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
+    style SimpleReport fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
+    style End fill:#c8e6c9,stroke:#4caf50,stroke-width:3px
+    style Choice fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+    style CompCheck fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+    
+    classDef researchBox fill:#ffffff,stroke:#616161,stroke-width:2px,stroke-dasharray: 5 5
+    classDef qualityBox fill:#ffffff,stroke:#616161,stroke-width:2px,stroke-dasharray: 5 5
+    
+    class Research researchBox
+    class QualityLoop qualityBox
