@@ -188,7 +188,6 @@ Quality assurance mechanism:
 
 ## 📂 Project Structure
 
-```
 Medluma_AI_Agent/
 ├── medluma_app.py                      # Main application entry point
 ├── medluma.py                          # Legacy/alternative implementation
