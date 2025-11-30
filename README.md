@@ -230,8 +230,6 @@ Medluma_AI_Agent/
 └── README.md              # This file
 
 
-## 💡 Value Proposition
-
 ## 📝 License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
