@@ -188,26 +188,27 @@ Quality assurance mechanism:
 
 ## 📂 Project Structure
 
-Medluma_AI_Agent/
-├── medluma_app.py                      # Main application entry point
-├── medluma.py                          # Legacy/alternative implementation
-├── adk.config.yaml                     # ADK web server configuration
-├── requirements.txt                    # Python dependencies
-├── LICENSE                             # MIT License
-├── README.md                           # This file
-├── .env                                # Environment variables (create this)
-├── .gitignore                          # Git ignore rules
-│
-├── medluma/                            # Application package
-│   └── __init__.py                     # Package initializer
-│
-├── images/                             # Assets and media
-│   ├── medluma_example.webm            # Demo video
-│   ├── disease_condition_research_flow.svg  # Workflow diagram
-│   ├── disease_info_generation.png     # Process diagram
-│   ├── medluna_capstone_image.png      # Banner image
-│   ├── medluna_image.png               # Architecture image
-│   └── future_app_medluna.png          # Future vision mockup
+Medluma_AI_Agent/  
+├── medluma_app.py                      # Main   application entry point  
+├── medluma.py                          # Legacy/  alternative implementation  
+├── adk.config.yaml                     # ADK   web server configuration  
+├── requirements.txt                    # Python   dependencies  
+├── LICENSE                             # MIT   License  
+├── README.md                           # This   file  
+├── .env                                #   Environment variables (create this)  
+├── .gitignore                          # Git   ignore rules  
+│  
+├── medluma/                            #   Application package  
+│   └── __init__.py                     #   Package initializer  
+│  
+├── images/                             # Assets   and media  
+│   ├── medluma_example.webm            # Demo   video  
+│   ├── disease_condition_research_flow.svg  #   Workflow diagram  
+│   ├── disease_info_generation.png     #   Process diagram  
+│   ├── medluna_capstone_image.png      # Banner   image  
+│   ├── medluna_image.png               #   Architecture image  
+│   └── future_app_medluna.png          # Future   vision mockup  
+
 ## 🚀 Future Enhancements
 
 <div align="center">
