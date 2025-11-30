@@ -213,7 +213,7 @@ Medluma_AI_Agent/
 
 <div align="center">
 
-![Future Vision](images/future_app_medluna.png)
+<img src="images/future_app_medluna.png"   alt="Medluma Workflow - Multi-Agent Architecture" width="400" style="display: block; margin: 0 auto;">
 
 *Vision for expanded capabilities*
 
@@ -231,8 +231,6 @@ Medluma_AI_Agent/
 ```
 
 ## 🚀 Future Enhancements
-
-![Future Vision](future_app_medluna.png)
 
 - 🌍 Multi-language support
 - 📱 Mobile application
@@ -270,10 +268,6 @@ If you find Medluma useful, please consider:
 - 📢 Sharing with others who might benefit
 
 ---
-
-<div align="center">
-
-![Medluma Architecture](images/medluna_image.png)
 
 *Empowering healthcare professionals and patients with AI-driven medical insights*
 
