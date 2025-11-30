@@ -1,3 +1,4 @@
+auto_discover: false
 apps:
   - path: ./medluma_app.py
     app_name: app
