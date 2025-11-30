@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src=images/medluna_capstone_image.png  alt="Medluma Banner" width="500" style="display: block; margin: 0 auto;">
+<img src=images/medluna_capstone_image.png  alt="Medluma Banner" width="500" height="500" style="display: block; margin: 0 auto;">
 
 ### 🎯 Bridge the gap between complex medical data and accessible health information
 
