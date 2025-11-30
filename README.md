@@ -94,7 +94,7 @@ At the heart of Medluma is **sophisticated multi-agent orchestration** powered b
 
 <div align="center">
 
-![Medluma Workflow](images/disease_condition_research_flow.svg)
+<img src="images/disease_condition_research_flow.svg"   alt="Medluma Workflow - Multi-Agent Architecture" width="400" style="display: block; margin: 0 auto;">
 
 *Complete workflow showing the multi-agent orchestration process*
 
