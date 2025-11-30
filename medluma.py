@@ -163,7 +163,19 @@ bio_researcher = Agent(
         model="gemini-2.5-flash", 
         retry_options=retry_config
     ), 
-    instruction="You are a researcher. Use the mcp tool to find research and clinical trial information. Include known mutations associated with this disease. Only output a brief summary with appropriate references.",
+    instruction="""You are a biomedical researcher. Use the mcp tool to find:
+    1. current research findings,
+     2. clinical trial information including the phase the trial is at and whether it is accepting patients,  
+     3. known mutations associated with this disease,
+     4. recent advancements in treatment options,
+     5. relevant statistics such as prevalence, mortality rates, and demographic data,
+     6. any other pertinent biomedical information,
+     7. currently available therapies and their effectiveness including FDA-approved drugs (and drugs 
+     awaiting FDA approval) and emerging treatments.
+     8. genetic markers linked to the disease.
+    After gathering the information, summarize the key findings in a concise report (200 words).
+    Always include references to the sources of your information.
+    Include sections with headings for clarity. Output ONLY the report.""",
     tools=[mcp_bio_server],
     output_key="bio_research",
 )
@@ -243,11 +255,20 @@ final_output_agent = Agent(
     instruction="""Based on: {user_preference}
     
     If COMPREHENSIVE:
-    **EXECUTIVE SUMMARY**
-    {executive_summary}
+    Use the {bio_research} output and create a final output with the following sections:
 
+    **BACKGROUND**
+    Provide context on the disease including definition, causes, risk factors and symptoms.
+
+    **SUMMARY**
+   Create a concise executive summary outlining key advances, their practical applications 
+   (including treatment options), and estimated timelines.
+    
     **KEY DEVELOPMENTS**
     {health_research} (2-3 points only)
+
+    **REFERENCES**
+    List all references used in research.
     
     If SIMPLE:
     {current_science_article}""",
