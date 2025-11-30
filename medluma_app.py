@@ -104,6 +104,7 @@ def exit_loop():
 coordinator_agent = Agent(
     name="CoordinatorAgent",
     model=Gemini(model="gemini-2.5-flash", retry_options=retry_config),
+    description="Determine user output preference for article detail level.",
     instruction="""Call get_output_preference tool. After user responds, check their message:
     - If 'comprehensive': output "comprehensive"
     - If 'simple': output "simple"
@@ -117,6 +118,7 @@ coordinator_agent = Agent(
 bio_researcher = Agent(
     name="BioResearcher",
     model=Gemini(model="gemini-2.5-flash", retry_options=retry_config),
+    description="Research biomedical information using the mcp tool.",
     instruction="""You are a researcher. Use the mcp tool to find research and clinical trial information. 
     Include known mutations associated with this disease. Only output a brief summary with appropriate references.""",
     tools=[mcp_bio_server],
@@ -127,6 +129,7 @@ bio_researcher = Agent(
 health_researcher = Agent(
     name="HealthResearcher",
     model=Gemini(model="gemini-2.5-flash", retry_options=retry_config),
+    description="Research recent medical breakthroughs for a particular disease or research area.",
     instruction="""Research recent medical breakthroughs for a particular disease or research area. 
     Include 3 significant advances, their practical applications, and estimated timelines. 
     Keep the report concise (100 words). Include relevant references.""",
@@ -138,6 +141,7 @@ health_researcher = Agent(
 aggregator_agent = Agent(
     name="AggregatorAgent",
     model=Gemini(model="gemini-2.5-flash", retry_options=retry_config),
+    description="Combine biomedical and health research findings into an executive summary.",
     instruction="""Combine these findings into an executive summary:
     **Research:** {bio_research}
     **News:** {health_research}
@@ -149,6 +153,7 @@ aggregator_agent = Agent(
 initial_science_writer_agent = Agent(
     name="InitialScienceWriterAgent",
     model=Gemini(model="gemini-2.5-flash", retry_options=retry_config),
+    description="Write a first draft scientific article based on the executive summary.",
     instruction="""Based on: {executive_summary}, write a first draft article (100-150 words).
     Output only the article text.""",
     output_key="current_science_article",
@@ -158,6 +163,7 @@ initial_science_writer_agent = Agent(
 critic_agent = Agent(
     name="CriticAgent",
     model=Gemini(model="gemini-2.5-flash", retry_options=retry_config),
+    description="Review the scientific article draft and provide feedback or approval.",
     instruction="""Review: {current_science_article}
     If well-written with references: respond "APPROVED"
     Otherwise: provide 2-3 suggestions.""",
@@ -168,6 +174,7 @@ critic_agent = Agent(
 refiner_agent = Agent(
     name="RefinerAgent",
     model=Gemini(model="gemini-2.5-flash", retry_options=retry_config),
+    description="Refine the scientific article draft based on critique feedback.",
     instruction="""Draft: {current_science_article}
     Critique: {critique}
     If critique is "APPROVED": call exit_loop
@@ -180,6 +187,7 @@ refiner_agent = Agent(
 final_output_agent = Agent(
     name="FinalOutputAgent",
     model=Gemini(model="gemini-2.5-flash", retry_options=retry_config),
+    description="Generate the final output based on user preference.",
     instruction="""Based on: {user_preference}
     
     If COMPREHENSIVE:
