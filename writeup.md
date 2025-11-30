@@ -97,7 +97,8 @@ The entire agent system is powered by **Gemini 2.0 Flash**, chosen for its speed
 
 ### **YouTube Video Submission**
 
-  * **Instruction:** The Kaggle submission form has a dedicated "Media Gallery" section for your YouTube URL. Ensure your video is under 3 minutes and covers the Problem Statement, Agents (Why Agents?), Architecture, and a short Demo of the solution.
+   * **📹   Medluma Introductory Video:** https://youtu.be/5qgAy6sQZJU
+  * **📹   Demo Video:** https://youtu.be/dw8fAooegd0
 
 -----
 
@@ -105,7 +106,6 @@ The entire agent system is powered by **Gemini 2.0 Flash**, chosen for its speed
 
   * **💻 Code Repository:** https://github.com/capgalea?tab=repositories
   * **📄 Documentation:** See the `README.md` file in the repository for full setup and agent details.
-  * **📹   Medluma Introductory Video:** https://youtu.be/5qgAy6sQZJU
-  * **📹   Video Demo:** https://youtu.be/dw8fAooegd0
+ 
 
 -----
