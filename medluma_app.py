@@ -263,8 +263,8 @@ app = App(
 )
 
 
-# Export the app so ADK can find it
-__all__ = ["app"]
+# Export the app and root_agent so ADK can find them
+__all__ = ["app", "root_agent"]
 
 if __name__ == "__main__":
     print("✅ Medluma app configured for web interface")
